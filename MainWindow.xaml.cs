@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -35,8 +36,8 @@ namespace Uklad_rownan
                 y = 0;
             }
 
-            string x_str = Convert.ToString(x);
-            string y_str = Convert.ToString(y);
+            string x_str = x.ToString("G2", CultureInfo.InvariantCulture);
+            string y_str = y.ToString("G2", CultureInfo.InvariantCulture);
 
             string y1_str = Convert.ToString(y1.Text);
             string y2_str = Convert.ToString(y2.Text);
@@ -103,21 +104,20 @@ namespace Uklad_rownan
             }
             else
             {
-                wynikx.Content = "x= " + x.ToString();
-                wyniky.Content = "y= " + y.ToString();
+                wynikx.Content = "x= " + x.ToString("G2", CultureInfo.InvariantCulture);
+                wyniky.Content = "y= " + y.ToString("G2", CultureInfo.InvariantCulture);
 
                 wynikx.Foreground = new SolidColorBrush(Colors.White);
                 wyniky.Foreground = new SolidColorBrush(Colors.White);
             }
 
-            obliczenia.Content =
+            obliczenia1.Content =
                 "W = " + x1_str + "*" + y2_str + "-" + x2_str + "*" + y1_str + " = " + Convert.ToString(W) + "\n" +
                 "Wx = " + q1_str + "*" + y2_str + "-" + q2_str + "*" + y1_str + " = " + Convert.ToString(Wx) + "\n" +
-                "Wy = " + x1_str + "*" + q2_str + "-" + x2_str + "*" + q1_str + " = " + Convert.ToString(Wy) + "\n" +
-                "x = " + "\n" +
-                "    Wx / W = " + x_str + "\n" +
-                "y =" + "\n" +
-                "    Wy / W = " + y_str;
+                "Wy = " + x1_str + "*" + q2_str + "-" + x2_str + "*" + q1_str + " = " + Convert.ToString(Wy) + "\n";
+            obliczenia2.Content = 
+                "x = " + "Wx / W = " + x.ToString("G2", CultureInfo.InvariantCulture) + "\n" +
+                "y =" +"Wy / W = " + y.ToString("G2", CultureInfo.InvariantCulture);
         }
     }
 }
